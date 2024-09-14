@@ -10,4 +10,13 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<Tipo> Tipos { get; set; }
+
+    public DbSet<Churrasco> Churrascos { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+	{
+	base.OnModelCreating(builder);
+	}
+
+    
 }
