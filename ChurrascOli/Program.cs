@@ -4,10 +4,10 @@ using ChurrascOli.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-string conexao = builder.Configuration.GetConnectionString("Conexao");
-var versao = ServerVersion.AutoDetect(conexao);
+string ChurrrascOliConexao = builder.Configuration.GetConnectionString("ChurrrascOliConexao");
+var versao = ServerVersion.AutoDetect(ChurrrascOliConexao);
 builder.Services.AddDbContext<AppDbContext>(
-    options => options.UseMySql(conexao, versao)
+    options => options.UseMySql(ChurrrascOliConexao, versao)
 );
 
 // Add services to the container.

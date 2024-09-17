@@ -20,8 +20,10 @@ public int Descricao  { get; set; }
 [StringLength(200)]
 public int Imagem { get; set; }
 
-[ForeignKey("TipoId")]
+
 public int TipoId { get; set; }
+[ForeignKey("TipoId")]
+public Churrasco Churrascos { get;set; }
 
 public ICollection<Churrasco> Churrascos { get; set; }
 
