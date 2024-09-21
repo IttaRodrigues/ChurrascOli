@@ -22,10 +22,9 @@ public class HomeController : Controller
     {
         HomeVM home = new()
         {
-            Tipos = _context.Tipos.ToList(),
-            Churrascos = _context.Churrascos
-                .Include(p => p.Tipo)
-                .ToList()
+            Tipos = [.. _context.Tipos],
+            Churrascos = [.. _context.Churrascos]
+                                
         };
         return View(home);
     }
@@ -33,16 +32,12 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Details(int id)
     {
-        Churrasco pokemon = _context.Churrascos
-            //.Where(p => p.Numero == id)
+        Churrasco churrascos = _context.Churrascos
+            .AsNoTracking()
             .Include(p => p.TipoId)
-            .ThenInclude(pt => pt.Tipo)
-            .SingleOrDefault();
-        DetailsVM details = new()
-        {
-            Atual = Churrasco,
-        };
-        return View(churrasco);
+            .FirstOrDefault(p => p.Id == id);
+                   
+        return View(churrascos);
     }
 
     public IActionResult Privacy()

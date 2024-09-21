@@ -25,6 +25,6 @@ public int TipoId { get; set; }
 [ForeignKey("TipoId")]
 public Churrasco Churrascos { get;set; }
 
-public ICollection<Churrasco> Churrascos { get; set; }
+public ICollection<Churrasco> Tipo { get; set; }
 
 }
