@@ -13,10 +13,20 @@ public class AppDbContext : DbContext
 
     public DbSet<Churrasco> Churrascos { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
-	base.OnModelCreating(builder);
+	optionsBuilder.UseMySql("server=localhost;database=ChurrascOli;uid=root;pwd=''",
+    new MySqlServerVersion(new Version (8, 0, 21)));
 	}
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Tipo>()
+        .HasMany(t => t.Churrascos)
+        .WithOne(c => c.Tipo)
+        .HasForeignKey(c => c.TipoId);
+        
+        base.OnModelCreating(modelBuilder);
+    }
 
-    
 }

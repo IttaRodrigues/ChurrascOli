@@ -22,8 +22,8 @@ INSERT INTO Tipo (Id, Nome) VALUES
 (3, 'Linguiça');
 
 INSERT INTO Churrasco (Id, Nome, Descricao, Imagem, TipoId) VALUES 
-(1, 'Fraldinha', 'Corte macio e saboroso, ideal para grelhar.', 'link_para_imagem_fraldinha.jpg', 1),
-(2, 'Frango', 'Carne leve e versátil, perfeita para diversas receitas.', 'link_para_imagem_frango.jpg', 2),
-(3, 'Linguiça Toscana', 'Linguiça saborosa, ideal para churrasco.', 'link_para_imagem_linguica_toscana.jpg', 3),
-(4, 'Picanha', 'Corte nobre, suculento e muito apreciado no Brasil.', 'link_para_imagem_picanha.jpg', 1),
-(5, 'Tomahawk', 'Corte grande e impressionante, com osso e muito sabor.', 'link_para_imagem_tomahawk.jpg', 1);
+(1, 'Fraldinha', 'Corte macio e saboroso, ideal para grelhar.', '/img/Fraldinha.jpg', 1),
+(2, 'Frango', 'Carne leve e versátil, perfeita para diversas receitas.', '/img/frango.jpg', 2),
+(3, 'Linguiça Toscana', 'Linguiça saborosa, ideal para churrasco.', '/img/linguiça.jpg', 3),
+(4, 'Picanha', 'Corte nobre, suculento e muito apreciado no Brasil.', '/img/picanha.jpg', 1),
+(5, 'Tomahawk', 'Corte grande e impressionante, com osso e muito sabor.', '/img/tomahowk.jpg', 1);
