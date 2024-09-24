@@ -33,13 +33,18 @@ public class HomeController : Controller
     public IActionResult Details(int id)
     {
         Churrasco churrascos = _context.Churrascos
+            
             .AsNoTracking()
-            .Include(p => p.TipoId)
+            .Include(p => p.Tipo)
             .FirstOrDefault(p => p.Id == id);
-                   
+            
+        DetailsVM details = new()     
+        
+    {
+         Atual = churrascos,
+     };
         return View(churrascos);
     }
-
     public IActionResult Privacy()
     {
         return View();
