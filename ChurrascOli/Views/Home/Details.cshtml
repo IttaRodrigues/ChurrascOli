@@ -10,13 +10,14 @@
 						{
 							<a asp-action="Details" asp-route-id="@Model.Anterior"
 								class="btn btn-lg btn-outline-danger text-white">
-								@Model.Anterior - @Model.Anterior.Nome
+								@Model.Anterior.Nome
+								
 							</a>
 						}
 					</div>
 
 					<div class="col text-center">
-						<h1 class="fs-1">@Model.Atual.Nome <span class="fs-2 text-secondary">Nº @Model.Atual</span></h1>
+						<h1 class="fs-1">@Model.Atual.Nome <span class="fs-2 text-secondary"></span></h1>
 					</div>
 					
 					<div class="col text-center">
@@ -24,7 +25,7 @@
 						{
 							<a asp-action="Details" asp-route-id="@Model.Proximo"
 								class="btn btn-lg btn-outline-danger text-white">
-								@Model.Proximo- @Model.Proximo.Nome
+								@Model.Proximo.Nome
 							</a>
 						}
 					</div>
@@ -36,7 +37,7 @@
 					</div>
 					<div class="col-lg-7 fs-5 mt-4">
 						<p class="mb-3"><strong>Descrição:</strong> @Model.Atual.Descricao</p>															
-						<p class="fw-bold">Tipo</p>				
+						<p class="fw-bold">Tipo: @Model.Atual.Nome</p>				
 					</div>
 				</div>
 			</div>

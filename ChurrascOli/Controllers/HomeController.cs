@@ -22,28 +22,31 @@ public class HomeController : Controller
     {
         HomeVM home = new()
         {
-            Tipos = [.. _context.Tipos],
-            Churrascos = [.. _context.Churrascos]
+            Tipos = [.. _context.Tipos.ToList()],
+            Churrascos = [.. _context.Churrascos.ToList()]
                                 
         };
         return View(home);
     }
 
-    [HttpGet]
     public IActionResult Details(int id)
     {
-        Churrasco churrascos = _context.Churrascos
-            
+        Churrasco churrascos = _context.Churrascos         
             .AsNoTracking()
             .Include(p => p.Tipo)
-            .FirstOrDefault(p => p.Id == id);
-            
-        DetailsVM details = new()     
+            .FirstOrDefault(p => p.Id == id);            
+            DetailsVM details = new()     
         
     {
-         Atual = churrascos,
+                //Atual = churrascos,
+                //Anterior = _context.Churrascos
+                //.FirstOrDefault(p => p.Id < id),
+                //Proximo = _context.Churrascos
+                //.OrderByDescending(p => p.Id)
+                //.FirstOrDefault()
+
      };
-        return View(churrascos);
+        return View(details);
     }
     public IActionResult Privacy()
     {
