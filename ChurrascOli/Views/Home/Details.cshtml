@@ -7,12 +7,13 @@
 				<div class="row">
 					<div class="col text-center">
 						@if (Model.Anterior != null)
-						{
-							<a asp-action="Details" asp-route-id="@Model.Anterior"
+						{ 
+							<a asp-action="Details" asp-route-id="@Model.Anterior.Id"
 								class="btn btn-lg btn-outline-danger text-white">
 								@Model.Anterior.Nome
 								
 							</a>
+							
 						}
 					</div>
 
@@ -23,7 +24,7 @@
 					<div class="col text-center">
 						@if (Model.Proximo != null)
 						{
-							<a asp-action="Details" asp-route-id="@Model.Proximo"
+							<a asp-action="Details" asp-route-id="@Model.Proximo.Id"
 								class="btn btn-lg btn-outline-danger text-white">
 								@Model.Proximo.Nome
 							</a>

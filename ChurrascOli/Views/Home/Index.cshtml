@@ -1,7 +1,7 @@
 ﻿@model ChurrascOli.ViewModels.HomeVM
 			@{
 				ViewData["Title"] = "Home";
-                }
+            }
 
 			<div class="pt-5 container">
 				<div class="row">
@@ -12,24 +12,25 @@
 								Ver Todos
 							</button>
 
+
+
 							@foreach (var tipo in Model.Tipos)
 							{
 								<button id="btn-@tipo.Id" class="btn btn-sm my-2 text-white btn-filter"
-									style="background-color:@tipo.Id" onclick="filter('@tipo.Nome')">@tipo.Nome</button>
+									onclick="filter('@tipo.Id')">@tipo.Nome</button>
 							}
 						</div>
 					</div>
 				</div>
 
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-
-					@foreach (var churrasco in Model.Churrascos)
-					{
-						<!-- Card Churrasco - Inicio -->
-						
-							<a asp-action="Details" asp-route-id="@churrasco.Nome" class="text-decoration-none">
+	
+					@foreach(var churrasco in Model.Churrascos ) {
+							<!-- Card Churrasco - Inicio -->
+						<div class="col churras @string.Join(' ', churrasco.Tipo.Churrascos.Select(t => t.TipoId))">
+							<a asp-action="Details" asp-route-id="@churrasco.Id" class="text-decoration-none">
 								<img src="@churrasco.Imagem" class="card-img-top" alt="@churrasco.Nome" />
-									<div class="card-body">
+									<div class="card-body">+
 										<h5 class="card-text mb-1 text-white"> @churrasco.Nome</h5>
 										<h3 class="card-title text-dark">@churrasco.Nome</h3>
 										<div class="d-flex justify-content-between align-items-center">
@@ -37,6 +38,7 @@
 										</div>
 									</div>
 							</a>
+						</div>
 						<!-- Card Churrasco - Fim -->
 					}
 				</div>

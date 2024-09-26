@@ -22,10 +22,14 @@ public class HomeController : Controller
     {
         HomeVM home = new()
         {
-            Tipos = [.. _context.Tipos.ToList()],
-            Churrascos = [.. _context.Churrascos.ToList()]
-                                
+            Tipos = _context.Tipos.ToList(),
+            Churrascos = _context.Churrascos
+                         .Include(p => p.Tipo)
+                         .ToList()         
         };
+        
+        
+
         return View(home);
     }
 
@@ -34,20 +38,22 @@ public class HomeController : Controller
         Churrasco churrascos = _context.Churrascos         
             .AsNoTracking()
             .Include(p => p.Tipo)
-            .FirstOrDefault(p => p.Id == id);            
-            DetailsVM details = new()     
-        
-    {
-                //Atual = churrascos,
-                //Anterior = _context.Churrascos
-                //.FirstOrDefault(p => p.Id < id),
-                //Proximo = _context.Churrascos
-                //.OrderByDescending(p => p.Id)
-                //.FirstOrDefault()
+            .FirstOrDefault(p => p.Id == id);  
 
-     };
+        DetailsVM details = new()     
+        {
+            Atual = churrascos,
+            Anterior = _context.Churrascos
+                        .OrderByDescending(p => p.Id)
+                        .FirstOrDefault(p => p.Id < id),
+            Proximo = _context.Churrascos
+                        .OrderBy(p => p.Id)
+                        .FirstOrDefault( p => p.Id > id)
+        };
+
         return View(details);
     }
+
     public IActionResult Privacy()
     {
         return View();
