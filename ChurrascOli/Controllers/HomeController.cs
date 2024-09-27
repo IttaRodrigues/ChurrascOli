@@ -27,22 +27,20 @@ public class HomeController : Controller
                          .Include(p => p.Tipo)
                          .ToList()         
         };
-        
-        
 
         return View(home);
     }
 
     public IActionResult Details(int id)
     {
-        Churrasco churrascos = _context.Churrascos         
+        Churrasco churrasco = _context.Churrascos         
             .AsNoTracking()
             .Include(p => p.Tipo)
             .FirstOrDefault(p => p.Id == id);  
 
         DetailsVM details = new()     
         {
-            Atual = churrascos,
+            Atual = churrasco,
             Anterior = _context.Churrascos
                         .OrderByDescending(p => p.Id)
                         .FirstOrDefault(p => p.Id < id),
